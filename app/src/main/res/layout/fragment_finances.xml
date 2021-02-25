@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/content_finances"
+        layout="@layout/content_finances" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent"
+        fab:menu_icon="@drawable/ic_add_white">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_expenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="AdicionarDespesa"
+            android:src="@drawable/ic_delete_white"
+            app:fab_colorNormal="@color/colorPrimaryDarkDespesa"
+            app:fab_colorPressed="@color/colorPrimaryDarkDespesa"
+            app:fab_label="Despesa"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="AdicionarReceita"
+            android:src="@drawable/ic_add_white"
+            app:fab_colorNormal="@color/colorPrimaryDarkReceita"
+            app:fab_colorPressed="@color/colorPrimaryDarkReceita"
+            app:fab_label="Receita"
+            app:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
