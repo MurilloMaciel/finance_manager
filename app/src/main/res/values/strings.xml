@@ -59,6 +59,7 @@
     <string name="expense">Expense</string>
     <string name="income">Income</string>
     <string name="general_balance">general balance</string>
+    <string name="date_pattern">dd/mm/aaaa</string>
 
     <string-array name="months">
         <item>January</item>

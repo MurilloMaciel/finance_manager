@@ -11,6 +11,7 @@ import com.maciel.murillo.finance_manager.R
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.maciel.murillo.finance_manager.databinding.FragmentAddMovementBinding
+import com.maciel.murillo.finance_manager.extensions.getDateToString
 import com.maciel.murillo.finance_manager.extensions.toDoubleSafe
 import com.maciel.murillo.finance_manager.extensions.toStringValue
 import com.maciel.murillo.finance_manager.model.entity.FinancialMovement
@@ -19,6 +20,7 @@ import com.maciel.murillo.finance_manager.utils.DateHelper
 import com.maciel.murillo.finance_manager.utils.EventObserver
 import com.maciel.murillo.finance_manager.viewmodel.AddMovementViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,6 +36,8 @@ class AddMovementFragment : Fragment() {
 
     private val arguments: AddMovementFragmentArgs by navArgs()
     private val movementType: MovementType by lazy { arguments.movementType }
+
+    private var movementDate = Calendar.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentAddMovementBinding.inflate(inflater, container, false)
@@ -69,9 +73,19 @@ class AddMovementFragment : Fragment() {
                     type = movementType.toStringValue(),
                     description = binding.etDescription.text.toString(),
                     category = binding.etCategory.text.toString(),
-                    date = binding.etDate.text.toString(),
+                    date = binding.tvDate.text.toString(),
                 )
             )
+        }
+
+        binding.tvDate.setOnClickListener {
+            DateSelectorDialog.show(childFragmentManager, movementDate) { year, month, day ->
+                binding.tvDate.text = movementDate.apply {
+                    set(Calendar.YEAR, year)
+                    set(Calendar.MONTH, month)
+                    set(Calendar.DAY_OF_MONTH, day)
+                }.getDateToString()
+            }
         }
     }
 
