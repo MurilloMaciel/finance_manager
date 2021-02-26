@@ -61,7 +61,7 @@
             android:id="@+id/tv_general_mnoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="saldo geral"
+            android:text="@string/general_balance"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="14sp"
@@ -88,10 +88,14 @@
         android:id="@+id/rv_finances"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mcv_calendar" />
+        app:layout_constraintTop_toBottomOf="@id/mcv_calendar"
+        tools:itemCount="3"
+        tools:listitem="@layout/view_finance" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

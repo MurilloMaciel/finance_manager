@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import com.maciel.murillo.finance_manager.R
 import com.maciel.murillo.finance_manager.databinding.ActivityMainBinding
+import com.maciel.murillo.finance_manager.extensions.safe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,16 +27,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleStartDestination() {
-        val navController = binding.fcvContainer.findNavController()
-        val navGraph =  navController.navInflater.inflate(R.navigation.nav_graph)
-
-        intent?.takeIf { it.hasExtra(EXTRA_DESTINATION) }?.run {
-            navController.graph = navGraph.apply {
-                startDestination = when (getStringExtra(EXTRA_DESTINATION)) {
-                    DESTINATION_LOGIN -> R.id.frag_login
-                    DESTINATION_SIGNUP -> R.id.frag_signup
-                    else -> R.id.frag_finances
-                }
+        binding.fcvContainer.findNavController().graph = binding.fcvContainer.findNavController().navInflater.inflate(R.navigation.nav_graph).apply {
+            startDestination = when (intent?.getStringExtra(EXTRA_DESTINATION).safe()) {
+                DESTINATION_LOGIN -> R.id.frag_login
+                DESTINATION_SIGNUP -> R.id.frag_signup
+                else -> R.id.frag_finances
             }
         }
     }

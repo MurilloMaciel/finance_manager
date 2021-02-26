@@ -12,13 +12,13 @@
     <color name="colorPrimaryDark">#00b2bc</color>
     <color name="colorAccent">#ff706a</color>
 
-    <!--Cores Despesas-->
-    <color name="colorPrimaryDespesa">#ff706a</color>
-    <color name="colorPrimaryDarkDespesa">#e66560</color>
-    <color name="colorAccentDespesa">#ff706a</color>
+    <!--Colors Expenses-->
+    <color name="colorPrimaryExpense">#ff706a</color>
+    <color name="colorPrimaryDarkExpense">#e66560</color>
+    <color name="colorAccentExpense">#ff706a</color>
 
-    <!--Cores Receitas-->
-    <color name="colorPrimaryReceita">#00D39E</color>
-    <color name="colorPrimaryDarkReceita">#00be8b</color>
-    <color name="colorAccentReceita">#00d39e</color>
+    <!--Colors Incomes-->
+    <color name="colorPrimaryIncome">#00D39E</color>
+    <color name="colorPrimaryDarkIncome">#00be8b</color>
+    <color name="colorAccentIncome">#00d39e</color>
 </resources>

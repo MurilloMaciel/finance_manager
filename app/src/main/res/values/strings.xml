@@ -3,49 +3,76 @@
 
     <string name="logout">Logout</string>
     <string name="title_activity_principal">PrincipalActivity</string>
-    <string name="tv_carregando">Carregando</string>
+    <string name="tv_carregando">Loading</string>
     <string name="splash_title">Finance Manager</string>
 
-    <string name="auth_error_password_empty">Digite uma senha</string>
-    <string name="auth_error_name_empty">Digite um nome</string>
-    <string name="auth_error_email_empty">Digite um e-mail</string>
-    <string name="auth_error_invalid_email">Digite um e-mail válido</string>
-    <string name="auth_error_strongest_password">Digite uma senha mais forte</string>
-    <string name="auth_error_valid_email">Digite um e-mail válido</string>
-    <string name="auth_error_account_already_exists">Essa conta já existe</string>
-    <string name="auth_error_info_doesnt_exists">E-mail e senha não correspondem a um usuário cadastrado</string>
-    <string name="auth_error_user_not_exists">Esse usuário não está cadastrado</string>
-    <string name="auth_error_generic">Ocorreu um erro ao realizar a autenticação</string>
+    <string name="auth_error_password_empty">Password cannot be empty</string>
+    <string name="auth_error_name_empty">Name cannot be empty</string>
+    <string name="auth_error_email_empty">E-mail cannot be empty</string>
+    <string name="auth_error_invalid_email">Need a valid e-mail</string>
+    <string name="auth_error_strongest_password">Use a strongest password</string>
+    <string name="auth_error_valid_email">Need a valid e-mail</string>
+    <string name="auth_error_account_already_exists">Account already exists</string>
+    <string name="auth_error_info_doesnt_exists">E-mail doesn\'t match any registered user</string>
+    <string name="auth_error_user_not_exists">Unregistered user</string>
+    <string name="auth_error_generic">An error occurred, try again</string>
 
-    <string name="form_error_description">Digite uma descrição</string>
-    <string name="form_error_category">Digite uma categoria</string>
-    <string name="form_error_date">Digite uma data</string>
-    <string name="form_error_value">Digite um valor</string>
-    <string name="form_error_save">Ocorreu um erro ao salvar, aguarde e tente novamente</string>
+    <string name="form_error_description">Description cannot be empty</string>
+    <string name="form_error_category">Category cannot be empty</string>
+    <string name="form_error_date">Date cannot be empty</string>
+    <string name="form_error_value">Value cannot be empty</string>
+    <string name="form_error_save">An error occurred, try again</string>
 
-    <string name="signup_now">CADASTRE-SE</string>
-    <string name="already_have_account">Ja tenho conta</string>
-    <string name="join_community">Junte-se a mais de meio milhão\nde pessoas e comece já</string>
-    <string name="create_account">Crie sua conta grátis</string>
-    <string name="login_access">ACESSAR</string>
-    <string name="have_account_signup">Não tem conta? Cadastre-se</string>
-    <string name="password">Senha</string>
-    <string name="email">Email</string>
-    <string name="access_your_account_free">Acesse sua conta grátis</string>
-    <string name="handle_your_finances">Organize suas contas \n de onde estiver</string>
-    <string name="easy_to_use">Simples, fácil de usar e grátis</string>
-    <string name="know_your_money_destiny">Saiba para onde está indo o seu dinheiro</string>
-    <string name="know_about_every_cent">Categorizando seus lançamentos e vendo \no destino de cada centavo</string>
-    <string name="never_forget_a_bill">Nunca mais esqueça\nde pagar uma conta</string>
-    <string name="receive_alerts">Receba alertas quando quiser!</string>
-    <string name="everything_organized">Tudo organizado no\ncelular ou computador</string>
-    <string name="use_into_your_smartphone_or_website">Use no seu smartphone e acessando\no Organizze pelo site</string>
-    <string name="create_account_free">Crie sua conta grátis</string>
-    <string name="name">Nome</string>
-    <string name="signup">CADASTRAR</string>
-    <string name="hint_value">R$ 00.00</string>
-    <string name="hint_date">Ex: 23/04/2012</string>
-    <string name="hint_category">Ex: salário</string>
-    <string name="hint_description">Ex: salário mensal</string>
+    <string name="data_error_get_user">An error occurred while trying to recover your user information</string>
+    <string name="data_error_generic">An error occurred while trying to comunicate with server, try again</string>
+
+    <string name="signup_now">REGISTER NOW</string>
+    <string name="already_have_account">Already have an account</string>
+    <string name="join_community">Join to our \ncommunity now</string>
+    <string name="create_account">Create a free account</string>
+    <string name="login_access">Login</string>
+    <string name="have_account_signup">Dont have an account? Sign up</string>
+    <string name="password">Password</string>
+    <string name="email">E-mail</string>
+    <string name="access_your_account_free">Login to your free account</string>
+    <string name="handle_your_finances">Organize your accounts\nfrom everywhere</string>
+    <string name="easy_to_use">Simple, easy to use and free</string>
+    <string name="know_your_money_destiny">Know where your money is going to</string>
+    <string name="know_about_every_cent">Categorizing your bank movements and seeing\nEvery cent destiny</string>
+    <string name="never_forget_a_bill">Never forgot\nto pay your bills</string>
+    <string name="receive_alerts">Receive alerts every time you want</string>
+    <string name="everything_organized">Everything organized into\nyour cellphone</string>
+    <string name="use_into_your_smartphone_or_website">Use into you smartphone\nor access website</string>
+    <string name="create_account_free">Create a free account</string>
+    <string name="name">Name</string>
+    <string name="signup">SIGN UP</string>
+    <string name="hint_value">$ 00.00</string>
+    <string name="hint_date">Date (dd/mm/yyyy)</string>
+    <string name="hint_category">Category</string>
+    <string name="hint_description">Description</string>
+    <string name="money_content">$ %1$s</string>
+    <string name="negative_money_content">- $ %1$s</string>
+    <string name="greetings">Hello, %1$s</string>
+    <string name="confirm_delete">Delete movement?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
+    <string name="general_balance">general balance</string>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 
 </resources>

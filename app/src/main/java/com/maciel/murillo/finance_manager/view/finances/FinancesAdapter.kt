@@ -3,7 +3,7 @@ package com.maciel.murillo.finance_manager.view.finances
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.maciel.murillo.finance_manager.R
+import com.maciel.murillo.finance_manager.databinding.ViewFinanceBinding
 import com.maciel.murillo.finance_manager.model.entity.FinancialMovement
 
 class FinancesAdapter(
@@ -11,10 +11,8 @@ class FinancesAdapter(
 ) : RecyclerView.Adapter<FinancesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FinancesViewHolder {
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.view_finance, parent, false)
-        return FinancesViewHolder(view)
+        val binding = ViewFinanceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FinancesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FinancesViewHolder, position: Int) {

@@ -22,22 +22,20 @@
             android:id="@+id/fab_expenses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="AdicionarDespesa"
             android:src="@drawable/ic_delete_white"
-            app:fab_colorNormal="@color/colorPrimaryDarkDespesa"
-            app:fab_colorPressed="@color/colorPrimaryDarkDespesa"
-            app:fab_label="Despesa"
+            app:fab_colorNormal="@color/colorPrimaryDarkExpense"
+            app:fab_colorPressed="@color/colorPrimaryDarkExpense"
+            app:fab_label="@string/expense"
             app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_recipes"
+            android:id="@+id/fab_incomes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="AdicionarReceita"
             android:src="@drawable/ic_add_white"
-            app:fab_colorNormal="@color/colorPrimaryDarkReceita"
-            app:fab_colorPressed="@color/colorPrimaryDarkReceita"
-            app:fab_label="Receita"
+            app:fab_colorNormal="@color/colorPrimaryDarkIncome"
+            app:fab_colorPressed="@color/colorPrimaryDarkIncome"
+            app:fab_label="@string/income"
             app:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

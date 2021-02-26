@@ -11,11 +11,15 @@ class RepositoryImpl @Inject constructor(
     private val dbService: DbService
 ) : Repository {
 
+    override suspend fun isUserLogged() = authService.isUserLogged()
+
     override suspend fun getCurrentUserId() = authService.getCurrentUserId()
 
     override suspend fun signup(name: String, email: String, password: String) = authService.signup(name, email, password)
 
     override suspend fun login(email: String, password: String) = authService.login(email, password)
+
+    override suspend fun logout() = authService.logout()
 
     override suspend fun saveUser(user: User) = dbService.saveUser(user)
 
@@ -27,9 +31,9 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun deleteMovement(movement: FinancialMovement) = dbService.deleteMovement(movement)
 
-    override suspend fun updateBalance(value: Double, movement: FinancialMovement) = dbService.updateBalance(value, movement)
+    override suspend fun updateBalance(movement: FinancialMovement) = dbService.updateBalance(movement)
 
     override suspend fun getTotalExpenses() = dbService.getTotalExpenses()
 
-    override suspend fun getTotalRecipes() = dbService.getTotalRecipes()
+    override suspend fun getTotalIncomes() = dbService.getTotalIncomes()
 }

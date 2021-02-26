@@ -5,6 +5,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.maciel.murillo.finance_manager.model.repository.Repository
+import com.maciel.murillo.finance_manager.model.repository.RepositoryImpl
 import com.maciel.murillo.finance_manager.model.service.AuthService
 import com.maciel.murillo.finance_manager.model.service.AuthServiceImpl
 import com.maciel.murillo.finance_manager.model.service.DbService
@@ -35,4 +37,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDbService(dbRef: DatabaseReference, auth: AuthService): DbService = DbServiceImpl(dbRef, auth)
+
+    @Singleton
+    @Provides
+    fun provideRepository(dbService: DbService, auth: AuthService): Repository = RepositoryImpl(auth, dbService)
 }

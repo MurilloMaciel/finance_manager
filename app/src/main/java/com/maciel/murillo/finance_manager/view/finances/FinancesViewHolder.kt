@@ -1,6 +1,5 @@
 package com.maciel.murillo.finance_manager.view.finances
 
-import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.maciel.murillo.finance_manager.R
@@ -9,21 +8,21 @@ import com.maciel.murillo.finance_manager.extensions.toStringValue
 import com.maciel.murillo.finance_manager.model.entity.FinancialMovement
 import com.maciel.murillo.finance_manager.model.entity.MovementType
 
-class FinancesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FinancesViewHolder(
+    private val binding: ViewFinanceBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-    private lateinit var binding: ViewFinanceBinding
-
-    fun bind(financialMovement: FinancialMovement) = with(itemView) {
+    fun bind(financialMovement: FinancialMovement) = with(binding.root) {
 
         binding.tvTitle.text = financialMovement.description
         binding.tvCategory.text = financialMovement.category
 
-        if (financialMovement.type == MovementType.RECIPE.toStringValue()) {
-            binding.tvValue.text = financialMovement.value.toString()
-            binding.tvValue.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorAccentReceita))
+        if (financialMovement.type == MovementType.INCOME.toStringValue()) {
+            binding.tvValue.text = String.format(binding.root.context.getString(R.string.money_content), financialMovement.value.toString())
+            binding.tvValue.setTextColor(ContextCompat.getColor(this.context, R.color.colorAccentIncome))
         } else {
-            binding.tvValue.text = "-${financialMovement.value}"
-            binding.tvValue.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+            binding.tvValue.text = String.format(binding.root.context.getString(R.string.negative_money_content), financialMovement.value.toString())
+            binding.tvValue.setTextColor(ContextCompat.getColor(this.context, R.color.colorAccent))
         }
     }
 }

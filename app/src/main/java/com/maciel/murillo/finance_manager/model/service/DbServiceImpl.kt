@@ -1,7 +1,6 @@
 package com.maciel.murillo.finance_manager.model.service
 
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.maciel.murillo.finance_manager.extensions.safe
 import com.maciel.murillo.finance_manager.extensions.toBase64
 import com.maciel.murillo.finance_manager.extensions.toChoosenDate
@@ -12,7 +11,7 @@ import com.maciel.murillo.finance_manager.model.entity.MovementType
 import com.maciel.murillo.finance_manager.model.service.DbConstants.FIREBASE_MOVEMENT
 import com.maciel.murillo.finance_manager.model.service.DbConstants.FIREBASE_USERS
 import com.maciel.murillo.finance_manager.model.service.DbConstants.FIREBASE_USERS_TOTAL_EXPENSES
-import com.maciel.murillo.finance_manager.model.service.DbConstants.FIREBASE_USERS_TOTAL_RECIPES
+import com.maciel.murillo.finance_manager.model.service.DbConstants.FIREBASE_USERS_TOTAL_INCOMES
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -21,15 +20,21 @@ class DbServiceImpl @Inject constructor(
     private val authService: AuthService
 ) : DbService {
 
-//    private val dbRef = FirebaseDatabase.getInstance().reference
-
     override suspend fun deleteMovement(movement: FinancialMovement) {
-        dbRef.child(FIREBASE_MOVEMENT)
-            .child(authService.getCurrentUserId())
-            .child(movement.date)
-            .child(movement.key)
-            .removeValue()
-            .await()
+        val user = getCurrentUser()
+        user?.run {
+            dbRef.child(FIREBASE_MOVEMENT)
+                .child(authService.getCurrentUserId())
+                .child(movement.date.toChoosenDate())
+                .child(movement.key.safe())
+                .removeValue()
+                .await()
+            if (movement.type.toMovementType() == MovementType.INCOME) {
+                updateBalanceWithIncome(this.totalIncome - movement.value)
+            } else {
+                updateBalanceWithExpense(this.totalExpense - movement.value)
+            }
+        } ?: throw Exception()
     }
 
     override suspend fun saveUser(user: User) {
@@ -79,26 +84,29 @@ class DbServiceImpl @Inject constructor(
         return snapshot.getValue(User::class.java)?.totalExpense ?: 0.0
     }
 
-    override suspend fun getTotalRecipes(): Double {
+    override suspend fun getTotalIncomes(): Double {
         val snapshot = dbRef.child(FIREBASE_USERS)
             .child(authService.getCurrentUserId())
             .get()
             .await()
-        return snapshot.getValue(User::class.java)?.totalRecipe ?: 0.0
+        return snapshot.getValue(User::class.java)?.totalIncome ?: 0.0
     }
 
-    override suspend fun updateBalance(value: Double, movement: FinancialMovement) {
-        if (movement.type.toMovementType() == MovementType.EXPENSE) {
-            updateBalanceWithExpense(value)
-        } else if (movement.type.toMovementType() == MovementType.RECIPE) {
-            updateBalanceWithRecipe(value)
-        }
+    override suspend fun updateBalance(movement: FinancialMovement) {
+        val user = getCurrentUser()
+        user?.run {
+            if (movement.type.toMovementType() == MovementType.EXPENSE) {
+                updateBalanceWithExpense(user.totalExpense + movement.value)
+            } else if (movement.type.toMovementType() == MovementType.INCOME) {
+                updateBalanceWithIncome(user.totalIncome + movement.value)
+            }
+        } ?: throw Exception()
     }
 
-    private suspend fun updateBalanceWithRecipe(value: Double) {
+    private suspend fun updateBalanceWithIncome(value: Double) {
         dbRef.child(FIREBASE_USERS)
             .child(authService.getCurrentUserId())
-            .child(FIREBASE_USERS_TOTAL_RECIPES)
+            .child(FIREBASE_USERS_TOTAL_INCOMES)
             .setValue(value)
             .await()
     }

@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.maciel.murillo.finance_manager.extensions.isEmailValid
 import com.maciel.murillo.finance_manager.model.AuthError
-import com.maciel.murillo.finance_manager.model.service.AuthService
+import com.maciel.murillo.finance_manager.model.repository.Repository
 import com.maciel.murillo.finance_manager.utils.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val authService: AuthService
+    private val repository: Repository
 ) : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -57,7 +57,7 @@ class LoginViewModel @Inject constructor(
 
     private fun login(email: String, password: String) {
         job = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
-            authService.login(email, password)
+            repository.login(email, password)
             _loginSuccessfull.postValue(Event(Unit))
         }
     }

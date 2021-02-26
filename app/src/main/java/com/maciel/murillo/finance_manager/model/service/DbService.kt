@@ -15,9 +15,9 @@ interface DbService {
 
     suspend fun deleteMovement(movement: FinancialMovement)
 
-    suspend fun updateBalance(value: Double, movement: FinancialMovement)
+    suspend fun updateBalance(movement: FinancialMovement)
 
     suspend fun getTotalExpenses(): Double
 
-    suspend fun getTotalRecipes(): Double
+    suspend fun getTotalIncomes(): Double
 }

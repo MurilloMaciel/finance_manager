@@ -13,11 +13,15 @@
 
         <action
             android:id="@+id/loginToFinancesFrag"
-            app:destination="@id/frag_finances" />
+            app:destination="@id/frag_finances"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph" />
 
         <action
             android:id="@+id/loginToSignupFrag"
-            app:destination="@id/frag_signup" />
+            app:destination="@id/frag_signup"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph"/>
 
     </fragment>
 
@@ -29,7 +33,15 @@
 
         <action
             android:id="@+id/signupToFinancesFrag"
-            app:destination="@id/frag_finances" />
+            app:destination="@id/frag_finances"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph" />
+
+        <action
+            android:id="@+id/signupToLoginFrag"
+            app:destination="@id/frag_login"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph"  />
 
     </fragment>
 
@@ -41,11 +53,13 @@
 
         <action
             android:id="@+id/financesToAddMovementFrag"
-            app:destination="@id/frag_add_movement" />
+            app:destination="@id/frag_add_movement"/>
 
         <action
             android:id="@+id/financesToLoginFrag"
-            app:destination="@id/frag_login" />
+            app:destination="@id/frag_login"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/nav_graph" />
 
     </fragment>
 

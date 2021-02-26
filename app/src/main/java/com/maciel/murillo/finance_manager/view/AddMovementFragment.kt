@@ -11,10 +11,11 @@ import com.maciel.murillo.finance_manager.R
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.maciel.murillo.finance_manager.databinding.FragmentAddMovementBinding
-import com.maciel.murillo.finance_manager.databinding.FragmentFinancesBinding
+import com.maciel.murillo.finance_manager.extensions.toDoubleSafe
 import com.maciel.murillo.finance_manager.extensions.toStringValue
 import com.maciel.murillo.finance_manager.model.entity.FinancialMovement
 import com.maciel.murillo.finance_manager.model.entity.MovementType
+import com.maciel.murillo.finance_manager.utils.DateHelper
 import com.maciel.murillo.finance_manager.utils.EventObserver
 import com.maciel.murillo.finance_manager.viewmodel.AddMovementViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,6 +46,8 @@ class AddMovementFragment : Fragment() {
         setUpObservers()
         setUpListeners()
         setThemeByMovementType()
+
+        binding.etDate.setText(DateHelper.getActualDate())
     }
 
     private fun setUpObservers() {
@@ -62,7 +65,7 @@ class AddMovementFragment : Fragment() {
             val value = binding.etValue.text.toString()
             addMovementViewModel.onClickDone(
                 FinancialMovement(
-                    value = value.toDouble(),
+                    value = value.toDoubleSafe(),
                     type = movementType.toStringValue(),
                     description = binding.etDescription.text.toString(),
                     category = binding.etCategory.text.toString(),
@@ -73,11 +76,13 @@ class AddMovementFragment : Fragment() {
     }
 
     private fun setThemeByMovementType() {
-        val color = if (movementType == MovementType.RECIPE) {
-            R.color.colorPrimaryReceita
+        val color = if (movementType == MovementType.INCOME) {
+            R.color.colorPrimaryIncome
         } else {
-            R.color.colorPrimaryDespesa
+            R.color.colorPrimaryExpense
         }
+
         binding.clExpense.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+        binding.fabDone.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
     }
 }

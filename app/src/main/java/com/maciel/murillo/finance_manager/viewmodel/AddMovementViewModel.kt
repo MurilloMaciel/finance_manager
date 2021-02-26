@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.maciel.murillo.finance_manager.model.AuthError
 import com.maciel.murillo.finance_manager.model.MovementFormError
 import com.maciel.murillo.finance_manager.model.entity.FinancialMovement
+import com.maciel.murillo.finance_manager.model.repository.Repository
 import com.maciel.murillo.finance_manager.model.service.DbService
 import com.maciel.murillo.finance_manager.utils.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddMovementViewModel @Inject constructor(
-    private val dbService: DbService
+    private val repository: Repository
 ) : ViewModel() {
 
     val exceptionHandler = CoroutineExceptionHandler { context, throwable ->
@@ -41,6 +42,7 @@ class AddMovementViewModel @Inject constructor(
     private fun validForm(movement: FinancialMovement): Boolean {
         return when {
             movement.value.toString().isEmpty() -> postError(MovementFormError.VALUE)
+            movement.value == 0.0 -> postError(MovementFormError.VALUE)
             movement.description.isEmpty() -> postError(MovementFormError.DESCRIPTION)
             movement.category.isEmpty() -> postError(MovementFormError.CATEGORY)
             movement.date.isEmpty() -> postError(MovementFormError.DATE)
@@ -55,7 +57,8 @@ class AddMovementViewModel @Inject constructor(
 
     private fun saveMovement(movement: FinancialMovement) {
         job = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
-            dbService.saveMovement(movement)
+            repository.saveMovement(movement)
+            repository.updateBalance(movement)
             _saveSuccessfull.postValue(Event(Unit))
         }
     }

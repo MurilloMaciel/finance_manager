@@ -14,8 +14,6 @@ class AuthServiceImpl @Inject constructor(
     private val auth: FirebaseAuth
 ) : AuthService{
 
-//    private val auth: FirebaseAuth by lazy { Firebase.auth }
-
     override suspend fun getCurrentUserId() = auth.currentUser?.email.safe().toBase64()
 
     override suspend fun isUserLogged() = auth.currentUser != null
