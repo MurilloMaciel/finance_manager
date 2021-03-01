@@ -147,8 +147,4 @@ class FinancesFragment : Fragment() {
             onClickCancel = { financesAdapter.notifyDataSetChanged() }
         )
     }
-
-    private fun updateFinances() {
-//        financesViewModel.updateFinances()
-    }
 }
