@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.maciel.murillo.finance_manager.R
@@ -50,8 +51,6 @@ class AddMovementFragment : Fragment() {
         setUpObservers()
         setUpListeners()
         setThemeByMovementType()
-
-        binding.etDate.setText(DateHelper.getActualDate())
     }
 
     private fun setUpObservers() {
@@ -97,6 +96,7 @@ class AddMovementFragment : Fragment() {
         }
 
         binding.clExpense.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
-        binding.fabDone.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+        binding.fabDone.backgroundTintList = AppCompatResources.getColorStateList(requireContext(), color)
+        binding.fabDone.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_done_white)
     }
 }

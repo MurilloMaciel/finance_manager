@@ -2,41 +2,26 @@
 <resources>
 
     <!--Colors Expenses-->
-    <color name="colorPrimaryExpense">#ff706a</color>
-    <color name="colorPrimaryDarkExpense">#e66560</color>
-    <color name="colorAccentExpense">#ff706a</color>
+    <color name="colorPrimaryExpense">#6C2522</color>
+    <color name="colorPrimaryDarkExpense">#6C2522</color>
+    <color name="colorAccentExpense">#6C2522</color>
 
     <!--Colors Incomes-->
-    <color name="colorPrimaryIncome">#00D39E</color>
-    <color name="colorPrimaryDarkIncome">#00be8b</color>
-    <color name="colorAccentIncome">#00d39e</color>
+    <color name="colorPrimaryIncome">#154E40</color>
+    <color name="colorPrimaryDarkIncome">#154E40</color>
+    <color name="colorAccentIncome">#154E40</color>
 
-    <color name="colorPrimary">#FFBB86FC</color>
-    <color name="colorPrimaryDark">#FFBB86FC</color>
-    <color name="colorAccent">#FFBB86FC</color>
-
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="colorPrimary">#FF3D3F47</color>
+    <color name="colorPrimaryDark">#252627</color>
+    <color name="colorAccent">#FFF0F0F0</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_light">#FFFBFBFB</color>
-    <color name="red">#FFEA504C</color>
-    <color name="salmon">#FFF4A18E</color>
     <color name="gray_dark_1">#FF3D3F47</color>
     <color name="gray_dark_2">#252627</color>
     <color name="gray_light_1">#FF979BA3</color>
     <color name="gray_light_2">#FFD0D0D0</color>
     <color name="gray_light_3">#FFD8D8D8</color>
     <color name="gray_light_4">#FFF0F0F0</color>
-    <color name="dim_gray">#706f6f</color>
-    <color name="indigo">#FF5C6BC0</color>
-    <color name="pink">#FFF06292</color>
-    <color name="blue">#FF42A5f5</color>
-    <color name="yellow">#FFFFF176</color>
-    <color name="orange">#FFFF8A65</color>
-    <color name="brown">#FFA1887F</color>
 </resources>

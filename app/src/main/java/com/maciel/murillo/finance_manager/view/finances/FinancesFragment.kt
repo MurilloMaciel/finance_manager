@@ -61,7 +61,6 @@ class FinancesFragment : Fragment() {
 
     private fun setUpObservers() {
         financesViewModel.logout.observe(viewLifecycleOwner, EventObserver {
-
             navController.navigate(FinancesFragmentDirections.financesToLoginFrag())
         })
 
@@ -75,6 +74,11 @@ class FinancesFragment : Fragment() {
 
         financesViewModel.refreshMovements.observe(viewLifecycleOwner, EventObserver {
             financesAdapter.notifyDataSetChanged()
+            binding.contentFinances.tvFinancesEmpty.visibility = if (financesViewModel.movements.isEmpty()) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         })
     }
 

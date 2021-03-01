@@ -59,7 +59,9 @@
     <string name="expense">Expense</string>
     <string name="income">Income</string>
     <string name="general_balance">general balance</string>
-    <string name="date_pattern">dd/mm/aaaa</string>
+    <string name="date_pattern">aaaa/mm/dd</string>
+    <string name="date_label">date: </string>
+    <string name="no_movements_added_this_month_yet">No movements added this month yet</string>
 
     <string-array name="months">
         <item>January</item>

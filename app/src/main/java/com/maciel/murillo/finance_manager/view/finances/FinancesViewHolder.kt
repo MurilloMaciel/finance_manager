@@ -22,7 +22,7 @@ class FinancesViewHolder(
             binding.tvValue.setTextColor(ContextCompat.getColor(this.context, R.color.colorAccentIncome))
         } else {
             binding.tvValue.text = String.format(binding.root.context.getString(R.string.negative_money_content), financialMovement.value.toString())
-            binding.tvValue.setTextColor(ContextCompat.getColor(this.context, R.color.colorAccent))
+            binding.tvValue.setTextColor(ContextCompat.getColor(this.context, R.color.colorAccentExpense))
         }
     }
 }
