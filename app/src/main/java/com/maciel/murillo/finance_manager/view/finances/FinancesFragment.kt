@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -23,8 +24,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FinancesFragment : Fragment() {
 
-    @Inject
-    lateinit var financesViewModel: FinancesViewModel
+    private val financesViewModel by viewModels<FinancesViewModel>()
 
     private val navController by lazy { findNavController() }
 

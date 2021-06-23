@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.maciel.murillo.finance_manager.R
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -27,8 +28,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AddMovementFragment : Fragment() {
 
-    @Inject
-    lateinit var addMovementViewModel: AddMovementViewModel
+    private val addMovementViewModel by viewModels<AddMovementViewModel>()
 
     private val navController by lazy { findNavController() }
 

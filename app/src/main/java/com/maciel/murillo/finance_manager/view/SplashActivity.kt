@@ -3,6 +3,7 @@ package com.maciel.murillo.finance_manager.view
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.maciel.murillo.finance_manager.R
 import com.maciel.murillo.finance_manager.utils.EventObserver
@@ -16,8 +17,7 @@ const val SPLASH_TIME = 2000L
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var splashViewModel: SplashViewModel
+    private val splashViewModel by viewModels<SplashViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

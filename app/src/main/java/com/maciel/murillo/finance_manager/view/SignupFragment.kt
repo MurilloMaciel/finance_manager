@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.material.MaterialTheme
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.maciel.murillo.finance_manager.compose_test.FabTest
 import com.maciel.murillo.finance_manager.databinding.FragmentSignupBinding
 import com.maciel.murillo.finance_manager.utils.EventObserver
 import com.maciel.murillo.finance_manager.viewmodel.SignupViewModel
@@ -17,16 +20,29 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
 
-    @Inject
-    lateinit var signupViewModel: SignupViewModel
+    private val signupViewModel by viewModels<SignupViewModel>()
 
     private val navController by lazy { findNavController() }
 
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentSignupBinding.inflate(inflater, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentSignupBinding.inflate(inflater, container, false).also {
+            it.composeViewSignup.setContent {
+                MaterialTheme {
+                    FabTest(
+                        text = "signup"
+                    ) {
+                        Toast.makeText(requireContext(), "signup", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
         return binding.root
     }
 
